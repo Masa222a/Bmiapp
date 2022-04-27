@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bmiapp</string>
+    <string name="title">BMI測定</string>
+    <string name="height">身長cm</string>
+    <string name="weight">体重kg</string>
+    <string name="result_title">BMI詳細</string>
+    <string name="your_bmi">あなたのBMI</string>
+    <string name="back">戻る</string>
+</resources>
