@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.IntegerRes
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.android.example.bmiapp.databinding.ActivityMainBinding
@@ -26,11 +27,12 @@ class MainActivity : AppCompatActivity() {
         binding.heightEd.setText(edHeight)
         binding.weightEd.setText(edWeight)
 
-        var editHeight = binding.heightEd.text.toString()
-        var editWeight = binding.weightEd.text.toString()
 
         binding.start.setOnClickListener {
-            onStartButtonTapped()
+//            onStartButtonTapped()
+
+            val editHeight = binding.heightEd.text.toString()
+            val editWeight = binding.weightEd.text.toString()
 
             if (editHeight == ""){
                 Toast.makeText(this, "身長が空欄です。", Toast.LENGTH_SHORT).show()
@@ -46,21 +48,29 @@ class MainActivity : AppCompatActivity() {
         binding.reset.setOnClickListener { onResetButtonTapped(it) }
     }
 
-    fun onStartButtonTapped() {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        pref.edit {
-            putString("HEIGHT", binding.heightEd.text.toString())
-            putString("HEIGHT", binding.weightEd.text.toString())
-        }
-    }
+//    private fun onStartButtonTapped() {
+//        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+//        pref.edit {
+//            putString("HEIGHT", binding.heightEd.text.toString())
+//            putString("WEIGHT", binding.weightEd.text.toString())
+//        }
+//    }
 
-    fun onChangeResult(view: View?) {
+    private fun onChangeResult(view: View?) {
         val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra("BMI", view?.id)
+        val height = Integer.parseInt(binding.heightEd.text.toString())
+        val weight = Integer.parseInt(binding.weightEd.text.toString())
+        val result = BmiCaluculation().caluculate(weight, height)
+        val bmi = result.bmi
+        val bodyType = result.bodyType
+        intent.putExtra("BMI", bmi)
+        Log.d("BMI", "${bmi}")
+        Log.d("bodytype", "${bodyType}")
+        intent.putExtra("BODYTYPE", bodyType)
         startActivity(intent)
     }
 
-    fun onResetButtonTapped(view: View?) {
+    private fun onResetButtonTapped(view: View?) {
         binding.weightEd.text.clear()
         binding.heightEd.text.clear()
     }

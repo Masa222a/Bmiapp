@@ -62,16 +62,16 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        android:textColor="@color/white"
-        android:text="あなたは痩せ気味な体重です。現状の体重を増やし健康な体系を目指してください。"
-        android:textSize="24sp"
+        android:text="あなたは痩せ気味な体重です。現状の体重を増やし健康な体型を目指してください。"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/body_shape" />
 
     <Button
-        android:id="@+id/start"
+        android:id="@+id/back"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

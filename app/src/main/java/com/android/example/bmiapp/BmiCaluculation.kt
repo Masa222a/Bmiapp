@@ -4,7 +4,7 @@ class BmiCaluculation {
     private lateinit var result: BmiInfo
 
     fun caluculate(weight: Int, height: Int): BmiInfo {
-        var bmi = weight / height * height
+        val bmi = weight / height * height
 
         if (bmi < 18.5) {
             var result = BmiInfo(bmi, BmiInfo.BodyType.SKINNY)
