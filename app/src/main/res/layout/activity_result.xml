@@ -57,12 +57,13 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
+        android:id="@+id/type_Text"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        android:text="あなたは痩せ気味な体重です。現状の体重を増やし健康な体型を目指してください。"
+        android:text="あなたは痩せ気味な体重です。現状の体重を増やし健康的な体型を目指してください。"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
