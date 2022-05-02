@@ -1,8 +1,7 @@
 package com.android.example.bmiapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.android.example.bmiapp.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
@@ -13,15 +12,11 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bmi = intent.getSerializableExtra("BMI")
-        val bodyType = intent.getSerializableExtra("BODYTYPE")
-        val text = intent.getSerializableExtra("TEXT")
+        val result = intent.getSerializableExtra("result") as BmiInfo
 
-        Log.d("Rbmi", "${bmi}")
-        Log.d("RbodyType", "${bodyType}")
-        binding.bmiResult.text = bmi.toString()
-        binding.bodyShape.text = bodyType.toString()
-        binding.typeText.text = text.toString()
+        binding.bmiResult.text = result.bmi.toString()
+        binding.bodyShape.text = result.bodyType.type
+        binding.typeText.text = result.bodyType.text
 
         binding.back.setOnClickListener { finish() }
     }

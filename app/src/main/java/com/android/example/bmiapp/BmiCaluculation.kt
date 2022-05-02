@@ -2,21 +2,17 @@ package com.android.example.bmiapp
 
 class BmiCaluculation {
     fun caluculate(weight: Int, height: Int): BmiInfo? {
-        var height = height.toDouble()
-        var weight = weight.toDouble()
-        var bmi = Math.round(weight / (height / 100) / (height / 100) * 10.0) / 10.0
-        var result: BmiInfo?
-
-        if (0 < bmi && bmi < 18.5) {
-            result = BmiInfo(bmi, BmiInfo.BodyType.SKINNY.type, BmiInfo.BodyType.SKINNY.text)
+        val height: Double = height.toDouble()
+        val weight: Double = weight.toDouble()
+        val bmi = Math.round(weight / (height / 100) / (height / 100) * 10.0) / 10.0
+        return if (0 < bmi && bmi < 18.5) {
+            BmiInfo(bmi, bodyType = BmiInfo.BodyType.SKINNY)
         } else if (18.5 <= bmi && bmi < 25) {
-            result = BmiInfo(bmi, BmiInfo.BodyType.STANDARD.type, BmiInfo.BodyType.STANDARD.text)
+            BmiInfo(bmi, bodyType = BmiInfo.BodyType.STANDARD)
         } else if (25 <= bmi) {
-            result = BmiInfo(bmi, BmiInfo.BodyType.OBESITY.type, BmiInfo.BodyType.OBESITY.text)
+            BmiInfo(bmi, bodyType = BmiInfo.BodyType.OBESITY)
         } else {
-            result = null
+            null
         }
-
-        return result
     }
 }
